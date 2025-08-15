@@ -1,5 +1,5 @@
 services:
-  mi-landing-page:
+  web:
     image: landing-page-sse:latest
     build:
       context: .
@@ -8,27 +8,6 @@ services:
         VITE_EMAILJS_SERVICE_ID: ${VITE_EMAILJS_SERVICE_ID}
         VITE_EMAILJS_TEMPLATE_ID: ${VITE_EMAILJS_TEMPLATE_ID}
         VITE_EMAILJS_PUBLIC_KEY: ${VITE_EMAILJS_PUBLIC_KEY}
-    restart: always
-    networks:
-      - sse
-    deploy:
-      labels:
-        - "traefik.enable=true"
-        # HTTPS
-        - "traefik.http.routers.landingpage-router.rule=Host(`ssesoftsolutions.com`) || Host(`www.ssesoftsolutions.com`)"
-        - "traefik.http.routers.landingpage-router.entrypoints=websecure"
-        - "traefik.http.routers.landingpage-router.tls=true"
-        - "traefik.http.routers.landingpage-router.tls.certresolver=myresolver"
-        # HTTP -> HTTPS redirect
-        - "traefik.http.routers.landingpage-router-http.rule=Host(`ssesoftsolutions.com`) || Host(`www.ssesoftsolutions.com`)"
-        - "traefik.http.routers.landingpage-router-http.entrypoints=web"
-        - "traefik.http.routers.landingpage-router-http.middlewares=redirect-to-https"
-        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-        # Puerto backend explícito
-        - "traefik.http.services.landingpage-svc.loadbalancer.server.port=80"
-        # Red que compartes con Traefik
-        - "traefik.docker.network=sse"
-
-networks:
-  sse:
-    external: true
+    ports:
+      - "80:80"
+    restart: unless-stopped

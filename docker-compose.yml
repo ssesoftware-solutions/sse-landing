@@ -1,25 +1,19 @@
+version: '3.8'
+
 services:
   web:
-    image: landing-page-sse:latest
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        VITE_EMAILJS_SERVICE_ID: ${VITE_EMAILJS_SERVICE_ID}
-        VITE_EMAILJS_TEMPLATE_ID: ${VITE_EMAILJS_TEMPLATE_ID}
-        VITE_EMAILJS_PUBLIC_KEY: ${VITE_EMAILJS_PUBLIC_KEY}
+        # Pasamos las variables del archivo .env al Dockerfile durante la construcción
+        - VITE_EMAILJS_SERVICE_ID=${VITE_EMAILJS_SERVICE_ID}
+        - VITE_EMAILJS_TEMPLATE_ID=${VITE_EMAILJS_TEMPLATE_ID}
+        - VITE_EMAILJS_PUBLIC_KEY=${VITE_EMAILJS_PUBLIC_KEY}
+    image: landing-page-sse:latest
+    container_name: landing-page-sse
     restart: unless-stopped
-    networks:
-      - sse # <-- Nombre de red corregido
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.sse-landing.rule=Host(`ssesoftsolutions.com`,`www.ssesoftsolutions.com`)"
-      - "traefik.http.routers.sse-landing.entrypoints=websecure"
-      - "traefik.http.routers.sse-landing.tls.certresolver=letsencryptresolver" # OJO: Usa el mismo nombre de resolver que tu Traefik
-      - "traefik.http.services.sse-landing.loadbalancer.server.port=80"
-      # --- Etiquetas para Docker Swarm ---
-      - "traefik.docker.network=sse"
-
-networks:
-  sse: # <-- Nombre de red corregido
-    external: true
+    ports:
+      # Mapeamos el puerto 80 del contenedor al puerto 8080 del VPS
+      # Usamos 8080 para no chocar con el Nginx principal del VPS
+      - "127.0.0.1:8080:80"

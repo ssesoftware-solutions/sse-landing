@@ -20,7 +20,7 @@ const HeroSection = () => {
   const particlesRef = useRef<Particle[]>([]);
   const [chatOpen, setChatOpen] = useState(false);
   const [selectedAgentName, setSelectedAgentName] = useState("Zoe, tu Recepcionista Virtual");
-  const [selectedWebhookUrl, setSelectedWebhookUrl] = useState("https://webhookn8n.ssesoftsolutions.com/webhook/ed99df65-180d-473b-b0c3-4a86f4d3b6f2");
+  const [selectedWebhookUrl, setSelectedWebhookUrl] = useState("https://n8n.ssesoftsolutions.com/webhook/ed99df65-180d-473b-b0c3-4a86f4d3b6f2");
 
   useEffect(() => {
     const canvas = canvasRef.current;

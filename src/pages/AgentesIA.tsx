@@ -40,7 +40,7 @@ const AgentesIA = () => {
       id: 1,
       name: t('agentName1'),
       title: t('agentTitle1'), 
-      webhookUrl: "https://webhookn8n.ssesoftsolutions.com/webhook/ed99df65-180d-473b-b0c3-4a86f4d3b6f2",
+      webhookUrl: "https://n8n.ssesoftsolutions.com/webhook/ed99df65-180d-473b-b0c3-4a86f4d3b6f2",
       description: t('agentDescription1'),
       icon: Scissors,
       features: [
@@ -64,7 +64,7 @@ const AgentesIA = () => {
       id: 2,
       name: t('agentName2'),
       title: t('agentTitle2'),
-      webhookUrl: "https://webhookn8n.ssesoftsolutions.com/webhook/e944fb85-7074-4848-ad32-be995e6d286d",
+      webhookUrl: "https://n8n.ssesoftsolutions.com/webhook/e944fb85-7074-4848-ad32-be995e6d286d",
       description: t('agentDescription2'),
       icon: Stethoscope,
       features: [
@@ -88,7 +88,7 @@ const AgentesIA = () => {
       id: 3,
       name: t('agentName3'),
       title: t('agentTitle3'),
-      webhookUrl: "https://webhookn8n.ssesoftsolutions.com/webhook/e4e4e9fc-a86d-4a9b-af48-2f0dc5d342c9",
+      webhookUrl: "https://n8n.ssesoftsolutions.com/webhook/e4e4e9fc-a86d-4a9b-af48-2f0dc5d342c9",
       description: t('agentDescription3'),
       icon: ShoppingCart,
       features: [

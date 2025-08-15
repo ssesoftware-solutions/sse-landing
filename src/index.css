@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SSE Software Solutions Design System */
+@layer base {
+  :root {
+    /* Core Brand Colors - Based on SSE Logo */
+    --background: 210 20% 8%;          /* Dark navy background */
+    --foreground: 210 40% 95%;         /* Light text */
+    --background-secondary: 210 25% 12%; /* Slightly lighter navy */
+
+    /* SSE Brand Colors from Logo */
+    --primary: 210 50% 45%;            /* SSE Blue from logo */
+    --primary-foreground: 0 0% 100%;   /* White text on primary */
+    --primary-glow: 210 60% 55%;       /* Lighter blue for effects */
+    --primary-dark: 210 45% 35%;       /* Darker blue from logo */
+    
+    /* UI Components using brand colors */
+    --card: 210 30% 15%;               /* Card background */
+    --card-foreground: 210 40% 90%;    /* Card text */
+    --card-glass: 210 25% 18%;         /* Glass effect background */
+    
+    --secondary: 210 20% 25%;          /* Secondary elements */
+    --secondary-foreground: 210 40% 90%;
+    
+    --muted: 210 15% 30%;              /* Muted elements */
+    --muted-foreground: 210 20% 60%;   /* Muted text */
+    
+    --accent: 210 50% 45%;             /* Same as primary for consistency */
+    --accent-foreground: 0 0% 100%;
+    
+    --border: 210 25% 20%;             /* Border color */
+    --input: 210 25% 18%;              /* Input backgrounds */
+    --ring: 210 50% 45%;               /* Focus rings */
+    
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Gradients using SSE brand colors */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background-secondary)) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(210, 25%, 15%, 0.8), hsla(210, 30%, 18%, 0.6));
+    
+    /* Effects using brand colors */
+    --shadow-glow: 0 10px 30px -10px hsl(var(--primary) / 0.4);
+    --shadow-card: 0 4px 6px -1px hsl(210 25% 8% / 0.3);
+    --glass-border: 1px solid hsl(210 30% 25% / 0.3);
+    
+    /* Animation */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --radius: 0.75rem;
+  }
+  
+  .dark {
+    /* Dark mode uses same SSE brand colors */
+    --background: 210 20% 8%;
+    --foreground: 210 40% 95%;
+    --card: 210 30% 15%;
+    --card-foreground: 210 40% 90%;
+    --primary: 210 50% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 25%;
+    --secondary-foreground: 210 40% 90%;
+    --muted: 210 15% 30%;
+    --muted-foreground: 210 20% 60%;
+    --accent: 210 50% 45%;
+    --accent-foreground: 0 0% 100%;
+    --border: 210 25% 20%;
+    --input: 210 25% 18%;
+    --ring: 210 50% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-['Poppins'] antialiased;
+  }
+}
+
+@layer utilities {
+  /* Text alignment utilities */
+  .text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+  /* Glass Effect */
+  .glass-effect {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: var(--glass-border);
+  }
+  
+  /* Hover Effects */
+  .hover-glow {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-glow:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .service-card {
+    transition: var(--transition-smooth);
+  }
+  
+  .service-card:hover {
+    transform: translateY(-8px);
+    border-color: hsl(var(--primary));
+  }
+  
+  /* Animations */
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% + 100vw));
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+    width: max-content;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(var(--primary) / 0.8);
+    }
+  }
+
+  @keyframes rotateSlow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .slide-in-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  .scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  .bounce-in {
+    animation: bounceIn 0.8s ease-out forwards;
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .rotate-slow {
+    animation: rotateSlow 20s linear infinite;
+  }
+  
+  .spin {
+    animation: spin 1s linear infinite;
+  }
+}

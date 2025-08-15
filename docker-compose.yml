@@ -15,7 +15,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.sse-landing.rule=Host(`ssesoftsolutions.com`,`www.ssesoftsolutions.com`)"
       - "traefik.http.routers.sse-landing.entrypoints=websecure"
-      - "traefik.http.routers.sse-landing.tls.certresolver=myresolver" # OJO: Usa el mismo nombre de resolver que tu Traefik
+      - "traefik.http.routers.sse-landing.tls.certresolver=letsencryptresolver" # OJO: Usa el mismo nombre de resolver que tu Traefik
       - "traefik.http.services.sse-landing.loadbalancer.server.port=80"
       # --- Etiquetas para Docker Swarm ---
       - "traefik.docker.network=sse"
